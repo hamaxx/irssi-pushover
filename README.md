@@ -1,4 +1,5 @@
-To use irssi pushover you will need an account at [pushover.net](https://pushover.net/)
+### Pushover for irssi ###
+Send private messages and highlights to your Android or iOS device via the [Pushover service](https://pushover.net/home)
 
 #### Install requirements on Ubuntu ####
     sudo apt-get install liblwp-useragent-determined-perl
