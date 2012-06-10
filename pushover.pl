@@ -23,27 +23,31 @@ $VERSION = "0.1";
 	changed	=> "2012-10-04"
 );
 
-my ($user_token, $delay);
+my ($user_token, $interval, %last_message);
 
-$delay = 60; #TODO make it user configurable
+$interval = 60; #TODO make it user configurable
+%last_message = {};
 
 sub sig_sendmsg {
 	my ($dest, $text, $stripped) = @_;
+	my $room = $dest->{target};
 
-	# change to (MSGLEVEL_HILIGHT|MSGLEVEL_MSGS) to work for
-	# all privmsgs too
 	if (($dest->{level} & (MSGLEVEL_HILIGHT|MSGLEVEL_MSGS)) &&
-			($dest->{level} & MSGLEVEL_NOHILIGHT) == 0) {
+			($dest->{level} & MSGLEVEL_NOHILIGHT) == 0 &&
+			$user_token) {
 
-		if ($user_token =~ /^[a-zA-Z0-9]{30}$/) {
+		if (!exists($last_message{$room}) || $last_message{$room} + $interval < time) {
 			LWP::UserAgent->new()->post(
 				"https://api.pushover.net/1/messages", [
 				"token" => "uhkTxjW8gexkVMazXAj2CNBN4qPB7W",
 				"user" => $user_token,
-				"title" => $dest->{target},
+				"title" => $room,
 				"message" => $stripped,
 			]);
 		}
+
+		$last_message{$room} = time;
+
 	}
 }
 
