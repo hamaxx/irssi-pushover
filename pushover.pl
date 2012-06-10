@@ -1,4 +1,4 @@
-# Push hilighted messages & private messages to pushover.net service
+# Push highlighted private messages to pushover.net service
 # Author: Jure Ham (jure@hamsworld.net)
 # Based on hilightwin code by Timo Sirainen
 
@@ -17,7 +17,7 @@ $VERSION = "0.1";
 	authors	=> "Jure Ham",
 	contact	=> "jure\@hamsworld.net",
 	name	=> "pushover for irssi",
-	description	=> "Push hilighted messages & private messages to pushover.net",
+	description	=> "Push highlighted & private messages to pushover.net",
 	license	=> "Public Domain",
 	url		=> "http://irssi.org/",
 	changed	=> "2012-10-04"
