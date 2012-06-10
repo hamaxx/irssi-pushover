@@ -1,16 +1,17 @@
-#### Install requirements on ubuntu ####
+To use irssi pushover you will need an account at [pushover.net](https://pushover.net/)
+
+#### Install requirements on Ubuntu ####
     sudo apt-get install liblwp-useragent-determined-perl
     sudo apt-get install libssl-dev
 
     sudo cpan -i Crypt::SSLeay
 
-#### Install ####
-    Copy pushover.pl to .irssi/scripts/autorun/
+#### Creat a link to the script ####
+    ln -s /path/to/irssi-pushover/pushover.pl ~/.irssi/scripts/autorun/
 
-#### Load script ####
+#### Load the script in irssi ####
     /script load autorun/pushover.pl
 
 #### Configure ####
-    Download https://pushover.net/ app and create account.
-    In irssi run "/pushover [user_key]".
-    To save settings run "/save".
+    /pushover [user_key]
+    /save
